@@ -9,7 +9,8 @@ let badTarget = {
     src: 'Assets/images/icons8-chat-48.png',
     animation: getRandomInt(8,10),
 }
-const targets = [goodTarget,goodTarget, badTarget];
+const targets = [goodTarget, goodTarget, badTarget];
+const moves =["animateTarget", "animateTarget2", "animateTarget3", "animateTarget4"];
 
 function getRandomInt(min, max) {
     random = Math.floor(Math.random() * (max - min) + min);
@@ -37,8 +38,8 @@ function showTarget() {
     // Quand la cible est cliquée
     target.onclick =  () => {
     target.id == 'target' ? score += 1 : time -= 3;
+    target.id == 'target' ? goodAudio.play() : badAudio.play();
     target.src = 'Assets/images/icons8-éclaboussure-48.png';
-    // target.remove();
     } 
     
 }
@@ -47,6 +48,8 @@ let container = document.querySelector('.container');
 let scoreContainer = document.querySelector('.score');
 let timeContainer = document.querySelector('.time');
 let btn = document.querySelector('.start_btn');
+const badAudio = new Audio('Assets/BGM/cat.wav');
+const goodAudio = new Audio('Assets/BGM/bug.wav');
 // Variables du jeu
 let score = 0;
 let time = 20;
@@ -56,10 +59,11 @@ btn.onclick = function () {
        // Création de la cible
        showTarget();  
         time -= 0.5;
+
        // Afficher les infos
         timeContainer.innerHTML = `Time : ${time}`;
         scoreContainer.innerHTML = `Score : ${score}`;
-        if (time == 0) {
+        if (time <= 0) {
             clearInterval(interval);
             container.innerHTML = `<div class="fin">
             <h1>Le jeu est terminé</h1>

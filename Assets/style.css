@@ -1,3 +1,43 @@
+/* Animations */
+@keyframes animateTarget{
+  to {
+      transform: translateY(-400px) rotate(90deg);
+  }
+}
+@keyframes animateTarget2{
+  to {
+      transform: translateY(400px) rotate(360deg);
+  }
+}
+@keyframes animateTarget3 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+@keyframes animateTarget4 {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Reset */
+
 *{
     margin: 0;
     padding: 0;
@@ -11,7 +51,7 @@ body{
     background-position: center;
     background-size: cover;
 }
-
+/* Container de jeu */
 .game_infos{
     display: flex;
     justify-content: space-between;
@@ -33,6 +73,7 @@ body{
     border-radius: 6px;
     overflow: hidden;
 }
+/* Cibles */
 #target{
     height: 40px;
     width: 40px;
@@ -47,11 +88,13 @@ body{
     transition: 0.25s ease-out;
     animation: animateTarget2 1s infinite;
 }
+/* Fin du jeu */
 .fin{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+/* Boutons */
 button{
     padding: 10px 20px;
     margin-bottom: 20px;
@@ -61,40 +104,18 @@ button{
     border-radius: 6px;
     cursor: pointer;
 }
+/* Mediaqueries  */
 
-@keyframes animateTarget{
-    to {
-        transform: translateY(-400px) rotate(90deg);
+@media screen and (max-width: 600px) {
+    .container{
+        width: 300px;
+    }
+    #target{
+        height: 30px;
+        width: 30px;
+    }
+    #badtarget{
+        height: 30px;
+        width: 30px;
     }
 }
-@keyframes animateTarget2{
-    to {
-        transform: translateY(400px) rotate(360deg);
-    }
-}
-@keyframes animateTarget3 {
-    0%,
-    50%,
-    100% {
-      opacity: 1;
-    }
-  
-    25%,
-    75% {
-      opacity: 0;
-    }
-  }
- 
-@keyframes animateTarget4 {
-    0% {
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0.5;
-    }
-  
-    100% {
-      opacity: 0;
-    }
-  }
